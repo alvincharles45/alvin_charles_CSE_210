@@ -10,20 +10,20 @@ public class BreathingActivity : MindfulnessActivity
     public void Run()
     {
         StartMessage();
-        int elapsed = 0;
-        while (elapsed < _duration)
+        int released = 0;
+        while (released < _time)
         {
             Console.Write("Breathe in... ");
             ShowCountdown(4);
             Console.WriteLine();
-            elapsed += 4;
+            released += 4;
 
-            if (elapsed >= _duration) break;
+            if (released >= _time) break;
 
             Console.Write("Breathe out... ");
             ShowCountdown(4);
             Console.WriteLine();
-            elapsed += 4;
+            released += 4;
         }
         EndMessage();
     }

@@ -34,8 +34,8 @@ public class ReflectionActivity : MindfulnessActivity
         Console.WriteLine($"\nPrompt:\n>>> {prompt} <<<");
         ShowSpinner(5);
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
-        while (DateTime.Now < endTime)
+        DateTime closeTime = DateTime.Now.AddSeconds(_time);
+        while (DateTime.Now < closeTime)
         {
             string question = _questions[rand.Next(_questions.Count)];
             Console.Write($"\n> {question} ");

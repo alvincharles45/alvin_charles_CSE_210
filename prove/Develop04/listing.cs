@@ -28,9 +28,9 @@ public class ListingActivity : MindfulnessActivity
         ShowCountdown(5);
         Console.WriteLine();
 
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+        DateTime closeTime = DateTime.Now.AddSeconds(_time);
         int count = 0;
-        while (DateTime.Now < endTime)
+        while (DateTime.Now < closeTime)
         {
             Console.Write("> ");
             Console.ReadLine();

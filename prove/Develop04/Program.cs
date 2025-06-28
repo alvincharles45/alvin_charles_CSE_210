@@ -12,7 +12,7 @@ class Program
          Console.WriteLine("1. Start Breathing Activity");
          Console.WriteLine("2. Start Reflection Activity");
          Console.WriteLine("3. Start Listing Activity");
-         Console.WriteLine("4. Start Gratitude Activity");
+         Console.WriteLine("4. Start Journaling Activity");
          Console.WriteLine("5. Quit");
          Console.Write("Choose an option (1-5): ");
 

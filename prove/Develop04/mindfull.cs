@@ -6,7 +6,7 @@ public class MindfulnessActivity
 {
     protected string _name;
     protected string _description;
-    protected int _duration;
+    protected int _time;
 
     public MindfulnessActivity(string name, string description)
     {
@@ -24,12 +24,12 @@ public class MindfulnessActivity
        string? input = Console.ReadLine();
        if (int.TryParse(input, out int duration) && duration > 0)
        {
-           _duration = duration;
+           _time = duration;
        }
        else
       {
           Console.WriteLine("Invalid duration. Defaulting to 10 seconds.");
-          _duration = 10;
+          _time = 10;
      }
 
         Console.WriteLine("\nGet ready...");
@@ -40,17 +40,17 @@ public class MindfulnessActivity
     {
         Console.WriteLine("\nGreat job!");
         ShowSpinner(2);
-        Console.WriteLine($"You have completed the {_name} activity for {_duration} seconds.");
+        Console.WriteLine($"You have completed the {_name} activity for {_time} seconds.");
         ShowSpinner(3);
     }
 
     public void ShowSpinner(int seconds)
     {
         string[] spinner = { "|", "/", "-", "\\" };
-        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        DateTime closeTime = DateTime.Now.AddSeconds(seconds);
         int i = 0;
 
-        while (DateTime.Now < endTime)
+        while (DateTime.Now < closeTime)
         {
             Console.Write(spinner[i % spinner.Length]);
             Thread.Sleep(200);
