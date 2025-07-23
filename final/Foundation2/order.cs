@@ -1,37 +1,63 @@
 // Order.cs
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 public class Order
 {
-    private List<Product> itemList      = new List<Product>();
-    private Customer       orderCustomer;
+    private List<Product> _products = new List<Product>();
+    private Customer      _customer;
 
-    public Order(Customer customerInput)
+    public Order(Customer customer)
     {
-        orderCustomer = customerInput;
+        _customer = customer;
     }
 
-    public void AddProduct(Product productInput)
+    public void AddProduct(Product product)
     {
-        itemList.Add(productInput);
+        _products.Add(product);
     }
 
     public double GetTotalPrice()
     {
-        double subtotal = itemList.Sum(p => p.GetTotalCost());
-        double shipping = orderCustomer.IsInUSA() ? 5.0 : 35.0;
-        return subtotal + shipping;
+        // 1) subtotal
+        double subtotal = 0.0;
+        foreach (var item in _products)
+        {
+            subtotal += item.GetTotalCost();
+        }
+
+        // 2) shipping
+        double shippingCost;
+        if (_customer.IsDomestic())
+        {
+            shippingCost = 5.0;
+        }
+        else
+        {
+            shippingCost = 35.0;
+        }
+
+        return subtotal + shippingCost;
     }
 
     public string GetPackingLabel()
     {
-        return string.Join("\n", itemList.Select(p => p.GetPackingLabel()));
+        var labelBuilder = "";
+        foreach (var item in _products)
+        {
+            labelBuilder += item.GetPackingLabel() + "\n";
+        }
+
+        if (labelBuilder.Length > 0)
+        {
+            // remove trailing newline
+            labelBuilder = labelBuilder.TrimEnd('\n');
+        }
+
+        return labelBuilder;
     }
 
     public string GetShippingLabel()
     {
-        return $"{orderCustomer.GetName()}\n{orderCustomer.GetAddress()}";
+        return $"{_customer.GetName()}\n{_customer.GetAddress()}";
     }
 }

@@ -1,26 +1,26 @@
 // Product.cs
 public class Product
 {
-    private string productName;
-    private string sku;
-    private double unitPrice;
-    private int    quantityOrdered;
+    private string _productName;
+    private string _sku;
+    private double _unitPrice;
+    private int    _quantity;
 
-    public Product(string nameInput, string skuInput, double priceInput, int quantityInput)
+    public Product(string productName, string sku, double unitPrice, int quantity)
     {
-        productName     = nameInput;
-        sku             = skuInput;
-        unitPrice       = priceInput;
-        quantityOrdered = quantityInput;
+        _productName = productName;
+        _sku         = sku;
+        _unitPrice   = unitPrice;
+        _quantity    = quantity;
     }
 
     public double GetTotalCost()
     {
-        return unitPrice * quantityOrdered;
+        return _unitPrice * _quantity;
     }
 
     public string GetPackingLabel()
     {
-        return $"{productName} (SKU: {sku})";
+        return $"{_productName} (SKU: {_sku})";
     }
 }

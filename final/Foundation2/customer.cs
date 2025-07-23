@@ -1,27 +1,27 @@
 // Customer.cs
 public class Customer
 {
-    private string fullName;
-    private Address homeAddress;
+    private string  _name;
+    private Address _address;
 
-    public Customer(string nameInput, Address addressInput)
+    public Customer(string name, Address address)
     {
-        fullName    = nameInput;
-        homeAddress = addressInput;
-    }
-
-    public bool IsInUSA()
-    {
-        return homeAddress.IsInUSA();
+        _name    = name;
+        _address = address;
     }
 
     public string GetName()
     {
-        return fullName;
+        return _name;
     }
 
     public Address GetAddress()
     {
-        return homeAddress;
+        return _address;
+    }
+
+    public bool IsDomestic()
+    {
+        return _address.IsDomestic();
     }
 }
